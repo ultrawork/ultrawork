@@ -1,3 +1,10 @@
+---
+title: "Deployment & Infrastructure"
+category: "deployment"
+tags: ["deployment", "infrastructure", "ci-cd", "production", "staging"]
+last_updated: "2026-02-07"
+---
+
 # Deployment
 
 Documentation for local development setup, staging, and production deployment procedures.
@@ -11,6 +18,13 @@ This section will contain:
 - CI/CD pipeline documentation
 - Infrastructure as Code
 - Monitoring and logging setup
+
+## Related Documentation
+
+- [Architecture](../architecture/README.md) - System design and components
+- [Conventions](../conventions/README.md) - Coding standards and practices
+- [Guides](../guides/README.md) - Getting started and troubleshooting
+- [Decisions](../decisions/README.md) - Architecture Decision Records
 
 ---
 

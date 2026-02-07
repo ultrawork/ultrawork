@@ -1,3 +1,10 @@
+---
+title: "Git Workflow"
+category: "conventions"
+tags: ["git", "workflow", "branching", "commits", "pull-requests"]
+last_updated: "2026-02-07"
+---
+
 # Git Workflow
 
 This document defines the Git branching strategy, commit conventions, and pull request process for the Ultrawork project.
@@ -421,3 +428,13 @@ git checkout feature/accidental-changes
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Git Best Practices](https://git-scm.com/book/en/v2)
 - [GitHub Flow](https://guides.github.com/introduction/flow/)
+
+## Related Documentation
+
+- [Conventions Overview](./README.md) - All coding conventions
+- [Coding Style Guide](./coding-style.md) - Code style standards
+- [Testing Standards](./testing-standards.md) - Testing practices
+
+---
+
+[Back to Conventions](./README.md) | [Back to main docs](../README.md)

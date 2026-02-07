@@ -1,3 +1,12 @@
+---
+title: "ADR-0002: Use Next.js and React for Frontend"
+category: "decisions"
+tags: ["frontend", "nextjs", "react", "typescript", "adr", "accepted"]
+status: "Accepted"
+date: "2026-02-07"
+last_updated: "2026-02-07"
+---
+
 # 0002. Use Next.js and React for Frontend
 
 **Status**: Accepted  
@@ -98,3 +107,14 @@ We will use **Next.js 15** as the React framework and **TypeScript** as the prim
 - **Pros**: Excellent data loading patterns, nested routing, progressive enhancement
 - **Cons**: Smaller ecosystem, fewer examples/tutorials, less mature than Next.js
 - **Why rejected**: Next.js App Router provides similar benefits with larger ecosystem and more mature tooling
+
+## Related Documentation
+
+- [ADR-0001: Use Kotlin and Spring Boot for Backend](./0001-use-kotlin-spring-boot.md)
+- [ADR-0003: Strict Linting with Zero Tolerance](./0003-strict-linting-zero-tolerance.md)
+- [Coding Style Guide](../conventions/coding-style.md) - Frontend implementation details
+- [Testing Standards](../conventions/testing-standards.md) - Frontend testing practices
+
+---
+
+[Back to Architecture Decisions](./README.md) | [Back to main docs](../README.md)

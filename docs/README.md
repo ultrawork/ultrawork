@@ -1,3 +1,10 @@
+---
+title: "Ultrawork Documentation"
+category: "documentation"
+tags: ["documentation", "index", "overview", "knowledge-base"]
+last_updated: "2026-02-07"
+---
+
 # Ultrawork Documentation
 
 Welcome to the Ultrawork project documentation hub. This knowledge base is designed to be AI-accessible and provides comprehensive information about the system.
@@ -25,9 +32,10 @@ API documentation and endpoint specifications.
 ## 🔍 Quick Links
 
 - [Getting Started](./guides/getting-started.md)
-- [Local Development Setup](./deployment/local-development.md)
-- [Production Deployment](./deployment/production-deployment.md)
 - [Troubleshooting](./guides/troubleshooting.md)
+- [Coding Style Guide](./conventions/coding-style.md)
+- [Testing Standards](./conventions/testing-standards.md)
+- [Git Workflow](./conventions/git-workflow.md)
 
 ## 📝 Documentation Standards
 

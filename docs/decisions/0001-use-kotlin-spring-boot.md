@@ -1,3 +1,12 @@
+---
+title: "ADR-0001: Use Kotlin and Spring Boot for Backend"
+category: "decisions"
+tags: ["backend", "kotlin", "spring-boot", "adr", "accepted"]
+status: "Accepted"
+date: "2026-02-07"
+last_updated: "2026-02-07"
+---
+
 # 0001. Use Kotlin and Spring Boot for Backend
 
 **Status**: Accepted  
@@ -82,3 +91,14 @@ We will use **Kotlin** as the primary programming language and **Spring Boot 3.4
 - **Pros**: Memory safety, zero-cost abstractions, excellent performance
 - **Cons**: Steep learning curve, immature ecosystem for enterprise features, longer development time
 - **Why rejected**: Team expertise and time-to-market constraints favor established JVM ecosystem
+
+## Related Documentation
+
+- [ADR-0002: Use Next.js and React for Frontend](./0002-use-nextjs-react.md)
+- [ADR-0003: Strict Linting with Zero Tolerance](./0003-strict-linting-zero-tolerance.md)
+- [Coding Style Guide](../conventions/coding-style.md) - Backend implementation details
+- [Testing Standards](../conventions/testing-standards.md) - Backend testing practices
+
+---
+
+[Back to Architecture Decisions](./README.md) | [Back to main docs](../README.md)

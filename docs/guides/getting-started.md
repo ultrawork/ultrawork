@@ -1,3 +1,10 @@
+---
+title: "Getting Started with Ultrawork"
+category: "guides"
+tags: ["getting-started", "setup", "installation", "quickstart"]
+last_updated: "2026-02-07"
+---
+
 # Getting Started with Ultrawork
 
 ## Prerequisites
@@ -36,3 +43,15 @@ npm run dev
 - Read [Architecture](../architecture/README.md)
 - Review [Conventions](../conventions/README.md)
 - Check [Deployment Guide](../deployment/README.md)
+- Explore [API Documentation](../api/README.md)
+
+## Related Documentation
+
+- [Guides Overview](./README.md) - All guides and tutorials
+- [Troubleshooting](./troubleshooting.md) - Common issues and solutions
+- [Conventions](../conventions/README.md) - Coding standards
+- [Architecture](../architecture/README.md) - System design
+
+---
+
+[Back to Guides](./README.md) | [Back to main docs](../README.md)

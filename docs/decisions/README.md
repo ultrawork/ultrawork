@@ -1,3 +1,10 @@
+---
+title: "Architecture Decision Records"
+category: "decisions"
+tags: ["adr", "architecture", "decisions", "technical-decisions"]
+last_updated: "2026-02-07"
+---
+
 # Architecture Decision Records
 
 This directory contains Architecture Decision Records (ADRs) documenting significant technical decisions made during the Ultrawork project development.
@@ -76,6 +83,12 @@ Skip ADRs for:
 ## Template
 
 See [template.md](./template.md) for the ADR template based on Michael Nygard's format.
+
+## Related Documentation
+
+- [Architecture](../architecture/README.md) - System design and components
+- [Conventions](../conventions/README.md) - Coding standards and practices
+- [Deployment](../deployment/README.md) - Deployment procedures
 
 ---
 

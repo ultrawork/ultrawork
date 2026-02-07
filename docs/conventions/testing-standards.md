@@ -1,3 +1,10 @@
+---
+title: "Testing Standards"
+category: "conventions"
+tags: ["testing", "junit", "vitest", "unit-tests", "integration-tests", "best-practices"]
+last_updated: "2026-02-07"
+---
+
 # Testing Standards
 
 This document defines testing requirements, conventions, and best practices for the Ultrawork project.
@@ -517,3 +524,13 @@ When tests fail in CI:
 - [Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Vitest Documentation](https://vitest.dev/)
 - [Playwright Documentation](https://playwright.dev/)
+
+## Related Documentation
+
+- [Conventions Overview](./README.md) - All coding conventions
+- [Coding Style Guide](./coding-style.md) - Code style standards
+- [Git Workflow](./git-workflow.md) - Version control standards
+
+---
+
+[Back to Conventions](./README.md) | [Back to main docs](../README.md)

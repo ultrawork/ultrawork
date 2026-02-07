@@ -1,3 +1,12 @@
+---
+title: "ADR-0003: Strict Linting with Zero Tolerance"
+category: "decisions"
+tags: ["code-quality", "linting", "detekt", "eslint", "adr", "accepted"]
+status: "Accepted"
+date: "2026-02-07"
+last_updated: "2026-02-07"
+---
+
 # 0003. Strict Linting with Zero Tolerance
 
 **Status**: Accepted  
@@ -159,3 +168,14 @@ formatting:
 - Backend: `./gradlew detektMain` runs before tests
 - Frontend: `npm run lint:strict` (ESLint with `--max-warnings 0`) runs before type check and tests
 - Both fail builds immediately on violations
+
+## Related Documentation
+
+- [ADR-0001: Use Kotlin and Spring Boot for Backend](./0001-use-kotlin-spring-boot.md)
+- [ADR-0002: Use Next.js and React for Frontend](./0002-use-nextjs-react.md)
+- [Coding Style Guide](../conventions/coding-style.md) - Detailed linting configuration
+- [Conventions README](../conventions/README.md) - Overview of all conventions
+
+---
+
+[Back to Architecture Decisions](./README.md) | [Back to main docs](../README.md)

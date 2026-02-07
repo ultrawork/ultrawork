@@ -1,3 +1,10 @@
+---
+title: "API Documentation"
+category: "api"
+tags: ["api", "rest", "endpoints", "authentication", "backend"]
+last_updated: "2026-02-07"
+---
+
 # API Documentation
 
 ## Base URL
@@ -376,9 +383,16 @@ All instance endpoints return `501 Not Implemented` (Phase 3).
    - `Retry-After` header indicates wait time
 
 3. **Role-Based Access:**
-   - `USER` - Standard user access
-   - `OWNER` - Administrative access to system info, metrics, and instance management
+    - `USER` - Standard user access
+    - `OWNER` - Administrative access to system info, metrics, and instance management
+
+## Related Documentation
+
+- [Architecture](../architecture/README.md) - System design and components
+- [Conventions](../conventions/README.md) - Coding standards and practices
+- [Deployment](../deployment/README.md) - Deployment procedures
+- [ADR-0001: Kotlin and Spring Boot](../decisions/0001-use-kotlin-spring-boot.md) - Backend technology decision
 
 ---
 
-[Link back to main docs](../README.md)
+[Back to main docs](../README.md)

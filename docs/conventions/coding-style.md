@@ -1,3 +1,10 @@
+---
+title: "Coding Style Guide"
+category: "conventions"
+tags: ["coding-style", "detekt", "eslint", "linting", "kotlin", "typescript"]
+last_updated: "2026-02-07"
+---
+
 # Coding Style Guide
 
 This document defines the coding standards and style conventions for the Ultrawork project.
@@ -323,3 +330,14 @@ npm run typecheck         # TypeScript type checking
 - [Airbnb TypeScript Style Guide](https://github.com/airbnb/javascript)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Detekt Rules](https://detekt.dev/docs/rules/complexity)
+
+## Related Documentation
+
+- [Conventions Overview](./README.md) - All coding conventions
+- [Testing Standards](./testing-standards.md) - Testing practices
+- [Git Workflow](./git-workflow.md) - Version control standards
+- [ADR-0003: Strict Linting](../decisions/0003-strict-linting-zero-tolerance.md) - Linting policy decision
+
+---
+
+[Back to Conventions](./README.md) | [Back to main docs](../README.md)

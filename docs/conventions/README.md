@@ -1,3 +1,10 @@
+---
+title: "Ultrawork Coding Conventions"
+category: "conventions"
+tags: ["coding-standards", "best-practices", "conventions", "style-guide"]
+last_updated: "2026-02-07"
+---
+
 # Ultrawork Coding Conventions
 
 This directory contains the coding standards, workflows, and best practices for the Ultrawork project.
@@ -293,11 +300,14 @@ If you have questions about conventions:
 
 ## Related Documentation
 
-- [Project README](../../README.md) - Project overview and setup
-- [API Documentation](../api/) - Backend API reference
-- [Architecture](../architecture/) - System design and decisions
-- [Deployment](../deployment/) - Infrastructure and deployment guide
+- [Architecture Decisions](../decisions/README.md) - Technical decision records
+- [API Documentation](../api/README.md) - Backend API reference
+- [Architecture](../architecture/README.md) - System design and components
+- [Deployment](../deployment/README.md) - Infrastructure and deployment guide
+- [Guides](../guides/README.md) - Getting started and troubleshooting
 
 ---
 
 **Remember**: These conventions exist to maintain code quality and team velocity. When in doubt, prioritize clarity and consistency.
+
+[Back to main docs](../README.md)

@@ -1,3 +1,10 @@
+---
+title: "Troubleshooting Guide"
+category: "guides"
+tags: ["troubleshooting", "debugging", "common-issues", "solutions"]
+last_updated: "2026-02-07"
+---
+
 # Troubleshooting Guide
 
 ## Common Issues and Solutions
@@ -291,6 +298,17 @@ If you encounter issues not covered here:
    - Email: dev@ultrawork.com
 
 5. Create a new issue:
-   - Include error messages, logs, and steps to reproduce
-   - Specify environment (dev/staging/production)
-   - Attach relevant configuration files (redact secrets!)
+    - Include error messages, logs, and steps to reproduce
+    - Specify environment (dev/staging/production)
+    - Attach relevant configuration files (redact secrets!)
+
+## Related Documentation
+
+- [Guides Overview](./README.md) - All guides and tutorials
+- [Getting Started](./getting-started.md) - Initial setup guide
+- [Conventions](../conventions/README.md) - Coding standards
+- [Deployment](../deployment/README.md) - Deployment procedures
+
+---
+
+[Back to Guides](./README.md) | [Back to main docs](../README.md)
