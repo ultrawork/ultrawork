@@ -765,3 +765,149 @@ To use these workflows, configure the following secrets in GitHub repository set
 - Service parameter passed to Ansible playbooks for conditional logic
 - Ansible playbooks (Task 19) handle actual deployment/restart logic
 
+
+## Task 21: ADR Framework Creation
+
+**Date**: 2026-02-07
+**Status**: ✅ Completed
+
+### Implementation Summary
+
+Successfully created Architecture Decision Records (ADR) framework in `/root/ultrawork/docs/decisions/` with template, process documentation, and three initial ADRs documenting key technical decisions.
+
+### Key Learnings
+
+#### 1. ADR Structure (Michael Nygard Format)
+- **Status**: Proposed | Accepted | Rejected | Deprecated | Superseded
+- **Date**: YYYY-MM-DD format for consistency
+- **Deciders**: Team or person responsible for decision
+- **Context**: Problem statement, constraints, requirements
+- **Decision**: Specific, concrete change being implemented
+- **Consequences**: Positive, negative, and neutral impacts
+- **Alternatives Considered**: Options evaluated and rejection rationale
+
+#### 2. ADR Content Best Practices
+- **Context Section**: Explain "why" before "what" - motivate the decision
+- **Decision Section**: Be specific and concrete (versions, tools, configurations)
+- **Consequences**: Separate positive/negative/neutral for clarity
+- **Alternatives**: Document rejected options to prevent revisiting same discussions
+- **Quantitative Data**: Include metrics where possible (bundle sizes, build times, performance)
+
+#### 3. ADR Numbering and Organization
+- **Sequential Numbering**: 0001, 0002, 0003 (4-digit zero-padded)
+- **Descriptive Filenames**: `NNNN-descriptive-kebab-case-title.md`
+- **Index Maintenance**: README.md contains chronological list of all ADRs
+- **Template**: Separate template.md file for consistency
+
+#### 4. ADR Process Documentation
+- **Creation Process**: Step-by-step guide for new ADRs
+- **Status Lifecycle**: Proposed → Accepted → (Deprecated/Superseded)
+- **When to Create**: Guidelines for decision significance
+- **When to Skip**: Avoid ADRs for trivial/temporary decisions
+- **Commit Strategy**: Include ADR in same commit as implementation
+
+#### 5. Content Extraction from Project History
+- **Learnings.md**: Rich source of implementation details and rationale
+- **build.gradle.kts**: Reveals technology versions and dependencies
+- **package.json**: Shows frontend stack and tooling choices
+- **Config Files**: detekt.yml and .eslintrc.json document linting policies
+- **Integration**: Cross-reference existing documentation for consistency
+
+#### 6. ADR Writing Style
+- **Audience**: Future team members unfamiliar with project history
+- **Clarity**: Use clear, concise language (avoid jargon without explanation)
+- **Completeness**: Document all alternatives considered (prevents "why didn't we use X?" questions)
+- **Honesty**: Include negative consequences (builds trust, sets expectations)
+- **Specificity**: Include versions, configurations, metrics (not just "we chose React")
+
+### Files Created
+
+1. `/root/ultrawork/docs/decisions/template.md` (39 lines, 675 bytes)
+   - Michael Nygard ADR format
+   - Sections: Status, Date, Deciders, Context, Decision, Consequences, Alternatives
+
+2. `/root/ultrawork/docs/decisions/0001-use-kotlin-spring-boot.md` (84 lines, 4.9K)
+   - Backend technology stack decision
+   - Kotlin 2.0.21 + Spring Boot 3.4.0 + Java 21
+   - Alternatives: Java, Node.js/NestJS, Go, Rust
+   - Key benefits: Type safety, null safety, Spring ecosystem, Testcontainers
+
+3. `/root/ultrawork/docs/decisions/0002-use-nextjs-react.md` (100 lines, 6.1K)
+   - Frontend technology stack decision
+   - Next.js 15 + React 19 + TypeScript 5
+   - Alternatives: CRA, Vue/Nuxt, Svelte/SvelteKit, Angular, Remix
+   - Key benefits: SSR, type safety, Tailwind CSS, Radix UI, testing infrastructure
+
+4. `/root/ultrawork/docs/decisions/0003-strict-linting-zero-tolerance.md` (161 lines, 7.2K)
+   - Linting policy decision
+   - Backend: Detekt with maxIssues: 0
+   - Frontend: ESLint with --max-warnings 0
+   - Alternatives: Warning-based linting, manual review, non-blocking CI, stricter rules
+   - Key benefits: Consistent quality, early bug detection, reduced review friction
+
+5. `/root/ultrawork/docs/decisions/README.md` (82 lines, 3.1K)
+   - ADR index with links to all ADRs
+   - Process documentation for creating new ADRs
+   - Status definitions and lifecycle
+   - Guidelines for when to create/skip ADRs
+
+### Verification Results
+
+```bash
+# All files created successfully
+ls -la /root/ultrawork/docs/decisions/
+# Output:
+# template.md (39 lines)
+# 0001-use-kotlin-spring-boot.md (84 lines)
+# 0002-use-nextjs-react.md (100 lines)
+# 0003-strict-linting-zero-tolerance.md (161 lines)
+# README.md (82 lines)
+# Total: 466 lines
+```
+
+### ADR Content Highlights
+
+**ADR-0001 (Kotlin/Spring Boot):**
+- Documented Spring Boot 3.4.0, Kotlin 2.0.21, Java 21 stack
+- Highlighted null safety, concise syntax, Spring ecosystem
+- Compared 4 alternatives (Java, Node.js, Go, Rust)
+- Included specific dependencies (PostgreSQL, Redis, JWT, Argon2, Testcontainers)
+
+**ADR-0002 (Next.js/React):**
+- Documented Next.js 15, React 19, TypeScript 5 stack
+- Highlighted SSR, type safety, Tailwind CSS, Radix UI
+- Compared 5 alternatives (CRA, Vue/Nuxt, Svelte, Angular, Remix)
+- Included specific libraries (React Hook Form, Zod, Zustand, @dnd-kit)
+
+**ADR-0003 (Strict Linting):**
+- Documented zero-tolerance policy (maxIssues: 0, --max-warnings 0)
+- Included actual configuration snippets (detekt.yml, .eslintrc.json)
+- Explained enforcement in CI/CD (GitHub Actions)
+- Compared 5 alternatives (warning-based, manual review, non-blocking, stricter rules, Prettier-only)
+
+### Integration Points
+
+- Links to main docs (../README.md) for navigation
+- References existing configurations (detekt.yml, .eslintrc.json)
+- Aligns with project history in learnings.md
+- Supports onboarding and knowledge transfer
+
+### Best Practices Applied
+
+1. **Template-First**: Created template.md before individual ADRs
+2. **Sequential Numbering**: 0001, 0002, 0003 for chronological order
+3. **Index Maintenance**: README.md lists all ADRs with links
+4. **Process Documentation**: Clear guidelines for creating new ADRs
+5. **Comprehensive Alternatives**: Each ADR documents 4-5 alternatives considered
+6. **Quantitative Data**: Included versions, metrics, build times, bundle sizes
+7. **Honest Consequences**: Listed negative impacts alongside positive benefits
+
+### Notes
+
+- ADRs capture decisions already implemented (Status: Accepted)
+- Template follows Michael Nygard's ADR format (industry standard)
+- Process documentation enables team to create future ADRs independently
+- Content extracted from project history (learnings.md, build files, configs)
+- Total 466 lines of documentation created
+- Framework ready for Phase 2 decisions (WebSocket, monitoring, SSL/TLS)
+
