@@ -1,0 +1,10 @@
+---
+all:
+  hosts:
+    production:
+      ansible_host: 144.124.229.191
+      ansible_user: root
+      ansible_ssh_pass: "{{ server_password }}"
+      ansible_python_interpreter: /usr/bin/python3
+  vars:
+    server_password: "2PH9hZz9KnM75vn-Xn+%"

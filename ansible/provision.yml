@@ -1,0 +1,133 @@
+---
+- name: Provision Ultrawork server
+  hosts: production
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      retries: 3
+      delay: 10
+      register: apt_update
+      until: apt_update is success
+
+    - name: Install required packages
+      apt:
+        name:
+          - git
+          - curl
+          - htop
+          - apt-transport-https
+          - ca-certificates
+          - gnupg
+          - lsb-release
+        state: present
+      retries: 3
+      delay: 10
+      register: apt_install
+      until: apt_install is success
+
+    - name: Check if Docker is installed
+      command: docker --version
+      register: docker_installed
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: docker_installed.rc != 0
+      retries: 3
+      delay: 10
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+      when: docker_installed.rc != 0
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+        update_cache: yes
+      when: docker_installed.rc != 0
+      retries: 3
+      delay: 10
+      register: docker_install
+      until: docker_install is success
+
+    - name: Check if Docker Compose is installed
+      command: docker-compose --version
+      register: compose_installed
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Download Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-linux-x86_64"
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+      when: compose_installed.rc != 0
+      retries: 3
+      delay: 10
+
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install UFW
+      apt:
+        name: ufw
+        state: present
+      retries: 3
+      delay: 10
+
+    - name: Configure UFW - Allow SSH
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+
+    - name: Configure UFW - Allow HTTP
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+
+    - name: Enable UFW
+      ufw:
+        state: enabled
+
+    - name: Create /opt/ultrawork directory
+      file:
+        path: /opt/ultrawork
+        state: directory
+        mode: '0755'
+
+    - name: Copy docker-compose.yml to server
+      copy:
+        src: /root/ultrawork/docker-compose.yml
+        dest: /opt/ultrawork/docker-compose.yml
+        mode: '0644'
+
+    - name: Copy nginx.conf to server
+      copy:
+        src: /root/ultrawork/nginx.conf
+        dest: /opt/ultrawork/nginx.conf
+        mode: '0644'
+
+    - name: Copy .env to server
+      copy:
+        src: /root/ultrawork/.env
+        dest: /opt/ultrawork/.env
+        mode: '0600'

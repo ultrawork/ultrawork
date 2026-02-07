@@ -1,0 +1,61 @@
+---
+- name: Deploy Ultrawork application
+  hosts: production
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Pull latest Docker images
+      command: docker-compose pull
+      args:
+        chdir: /opt/ultrawork
+      retries: 3
+      delay: 10
+      register: docker_pull
+      until: docker_pull.rc == 0
+      ignore_errors: yes
+
+    - name: Build and start services
+      command: docker-compose up -d --build
+      args:
+        chdir: /opt/ultrawork
+      retries: 3
+      delay: 10
+      register: docker_up
+      until: docker_up.rc == 0
+
+    - name: Wait for services to start
+      pause:
+        seconds: 10
+
+    - name: Check service health
+      command: docker-compose ps
+      args:
+        chdir: /opt/ultrawork
+      register: services_status
+      retries: 5
+      delay: 10
+      until: services_status.rc == 0
+      changed_when: false
+
+    - name: Verify all services are running
+      shell: |
+        docker-compose ps | grep -E '(backend|frontend|postgres|redis|nginx)' | grep -v 'Up' && exit 1 || exit 0
+      args:
+        chdir: /opt/ultrawork
+      register: health_check
+      retries: 5
+      delay: 10
+      until: health_check.rc == 0
+      changed_when: false
+
+    - name: Display services status
+      debug:
+        var: services_status.stdout_lines
+
+    - name: Assert all services are healthy
+      assert:
+        that:
+          - health_check.rc == 0
+        fail_msg: "Not all services are healthy"
+        success_msg: "All services are running and healthy"
