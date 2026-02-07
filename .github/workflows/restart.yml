@@ -1,0 +1,53 @@
+name: Restart Services
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to restart'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+          - frontend
+          - postgres
+          - redis
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Configure SSH credentials
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Run restart playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'False'
+        run: |
+          ansible-playbook \
+            -i ansible/inventory.yml \
+            -u ${{ secrets.SSH_USER }} \
+            -e "service=${{ github.event.inputs.service }}" \
+            ansible/restart.yml
+
+      - name: Verify restart
+        run: |
+          echo "Restart of ${{ github.event.inputs.service }} completed successfully"
